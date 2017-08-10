@@ -20,7 +20,6 @@ Millions of hours of video are recorded weekly on dashcams, and storage costs ca
 [The Algorithm](#Model)<br />
 [Documentation](#Docs)<br />
 [Resources](#Resources)<br />
-[Dependencies](#Deps)<br />
 [Other Information](#Other)<br /><br />
 
 <a name="Summary"/>
@@ -64,9 +63,12 @@ For the final dataset, I had a total of 129 positive videos (those with crashes)
 
 <b>Processing</b>:
 
-Each video is broken up into its individual frames to be analyzed separately. Each of these images is a two-dimensional array of pixels (1280x720) where each pixel has information about the red, green, and blue (RGB) color levels. To reduce the dimensionality at the individual image level, I convert the 3-D RGB color arrays to grayscale. Additionally, to make the computations more tractable on a CPU, I downsample each image by a factor of 5 - in effect, averaging every five pixels to reduce the size of each image to a 2-D array of 256x144 (as opposed to the initial 3-D array of 1280x720x3). (This sequence of events is illustrated in the image to the upper right).
+Each video is broken up into its individual frames to be analyzed separately. Each of these images is a two-dimensional array of pixels (1280x720) where each pixel has information about the red, green, and blue (RGB) color levels. To reduce the dimensionality at the individual image level, I convert the 3-D RGB color arrays to grayscale. Additionally, to make the computations more tractable on a CPU, I downsample each image by a factor of 5 - in effect, averaging every five pixels to reduce the size of each image to a 2-D array of 256x144 (as opposed to the initial 3-D array of 1280x720x3). (This sequence of events is illustrated in the image below).
 
-Additional processing was explored for this project, such as median-subtracting out the background of the images and featurizing each frame in the image. The latter was done with the pre-trained inception and imagenet models (these are models that largely rely on convolutional neural networks to classify images based on a reduced set of extracted features from the images). These approaches did not produce an discernible improvement and were left out of the final product.
+Additional processing was explored for this project, such as median-subtracting out the background of the images and featurizing each frame in the image. The latter was done with the pre-trained inception and imagenet models (these are models that largely rely on convolutional neural networks to classify images based on a reduced set of extracted features from the images). These approaches did not produce an discernible improvement and were left out of the final product.<br/>
+
+<img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/videotoimg.png" alt="Data Processing">
+
 <br /> <br />
 
 
@@ -91,9 +93,12 @@ The 258 video set was used with the HRNN for the classification of crash/not cra
 
 The hyperparameters - the number of layers in the neural network layers, the batch size, the number of epochs - were adjusted using a comparison to a control run (as a grid search was not feasible in the alloted timeframe). As an extra sanity check, I created fake data by populating images with random numbers and running the fake data through the model, achieving results equivalent to random chance. The final model uses a binary crossentropy loss with a NAdam optimization and 128 layers in each neural network.
 
-In the end, the ROC (receiver operating characteristic) curves were built with the final 20% of the data - the test set (as seen in the image above to the right). The area under the curve is 0.80 and the overall accuracy is ~81%, well above random chance (the dotted black line in the plot).
+In the end, the ROC (receiver operating characteristic) curves were built with the final 20% of the data - the test set (as seen in the image above to the right). The area under the curve is 0.80 and the overall accuracy is ~81%, well above random chance (the dotted black line in the plot below).
 
-Other approaches were explored initially, including logistic regression and basic NN to classify and predict based on hand-labeled frames (crash vs. not crash) from five longer (>30 seconds) YouTube videos merged together. The model performed excellent on a randomly selected hold-out set of frames from within these images, but was unable to generalize to any new test video, again showing how a lack of data heavily weighs on this problem. Additionally, unsupervised clustering on these same hand-labeled frames was tested on a single video. The goal was to determine if the frames containing an accident within these longer videos were distinct from the rest of the non-accident frames. While the accident frames did appear to occupy different clusters than most of the rest of the video, it was not a unique mapping; other events in the video (e.g.: going through a tunnel) prompted similar clustering behavior.
+Other approaches were explored initially, including logistic regression and basic NN to classify and predict based on hand-labeled frames (crash vs. not crash) from five longer (>30 seconds) YouTube videos merged together. The model performed excellent on a randomly selected hold-out set of frames from within these images, but was unable to generalize to any new test video, again showing how a lack of data heavily weighs on this problem. Additionally, unsupervised clustering on these same hand-labeled frames was tested on a single video. The goal was to determine if the frames containing an accident within these longer videos were distinct from the rest of the non-accident frames. While the accident frames did appear to occupy different clusters than most of the rest of the video, it was not a unique mapping; other events in the video (e.g.: going through a tunnel) prompted similar clustering behavior. <br />
+
+<img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/roc.png" alt="ROC Curve">
+
 
 <br />
 <b>Next Steps and Broader Applications</b>:
@@ -117,14 +122,6 @@ This algorithm is best implemented at scale. The analysis already splits input l
 
 <a name="Resources"/>
 <h3>Resources</h3>
-
-<br /><br />
-
-
-
-<a name="Deps"/>
-<h3>Dependencies</h3>
-
 
 <br /><br />
 
