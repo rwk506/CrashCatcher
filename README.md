@@ -104,6 +104,7 @@ Other approaches were explored initially, including logistic regression and basi
 <br />
 <b>Next Steps and Broader Applications</b>:
 
+
 The ultimate goal is to build a model with the data I have to make predictions for a wider variety of situations. In general, neural networks rely on training on a LOT of data (thousands of data points - this case videos) to be able to accurately predict or classify in a new situation. Essentially more data = a more generalizable model.
 
 There are a few ways to achieve this goal. One is to simply gather more data - however this is a heavily tedious, time-intensive task for humans. Another possible solution is to generate "new" data by slightly altering the data we have. This means applying rotation, horizontal flips, changing image quality, or other variations on the images within each video. Although most humans would recognize the altered videos as being essentially the same, it looks like different and new data to the algorithm. Repeating these alterations over and over to the same set of videos generates a larger dataset and will improve the generalization of the predictions to never-before-seen data.
@@ -130,13 +131,13 @@ There are three main files important to this project included here:
 
 <a name="Resources"/>
 <h3>Resources</h3>
-[HRNN for the MNIST Dataset for Handwritten Number Recognition](https://github.com/fchollet/keras/blob/master/examples/mnist_hierarchical_rnn.py)
 
-[A Hierarchical Neural Autoencoder for Paragraphs and Documents](https://arxiv.org/abs/1506.01057)
-
-[Hierarchical recurrent neural network for skeleton based action recognition](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7298714)
-
-[AAVC Dataset from VSLab](https://aliensunmin.github.io/project/dashcam/)
+<ul>
+<li> <a href="https://github.com/fchollet/keras/blob/master/examples/mnist_hierarchical_rnn.py">HRNN for the MNIST Dataset for Handwritten Number Recognition</a>
+<li> <a href="https://arxiv.org/abs/1506.01057">A Hierarchical Neural Autoencoder for Paragraphs and Documents</a>
+<li> <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7298714">Hierarchical recurrent neural network for skeleton based action recognition</a>
+<li> <a href="https://aliensunmin.github.io/project/dashcam/">AAVC Dataset from VSLab</a>
+</ul>
 
 <br /><br />
 
