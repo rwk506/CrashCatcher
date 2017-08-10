@@ -8,7 +8,9 @@
    <img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/frontpage2.png" alt="CrashCatcher">
 </a>
 
-Millions of hours of video are recorded weekly on dashcams, and storage costs can easily skyrocket if all video is stored unnecesarily. Automatically screening dashcam footage for accidents is an easy way to reduce storage costs and to only save footage relevant to the mission and goals of an organization. Visit the [Crash Catcher](http://crashcatcher.site) website to check out some example videos to see the algorithm in action, or upload your own video to see how it works.
+Dashboard Camera video is becoming more and more common these days - whether it's ride-sharing companies, police departments, self-driving cars, or insurance companies, there are millions upon millions of hours of video being generated each month. But, accidents are rare, meaning most of this video is irrelevant to organizations and their goals. That's where Crash Catcher comes in - it can sift through this video and detect when a video clip contains an accident, saving time and money.
+
+Visit the [Crash Catcher](http://crashcatcher.site) website to see the algorithm in action with example videos, or upload your own dashcam footage to see how it works.
 
 <br />
 
