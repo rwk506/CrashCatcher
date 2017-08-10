@@ -2,10 +2,10 @@
 <b>A Dashboard Camera Accident Detector</b>
 
 <a href="http://crashcatcher.site/">
-   <img src="https://github.com/rwk506/CrashCatcher/blob/master/images/frontpage1.png" alt="CrashCatcher">
+   <img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/frontpage1.png" alt="CrashCatcher">
 </a>
 <a href="http://crashcatcher.site/">
-   <img src="https://github.com/rwk506/CrashCatcher/blob/master/images/frontpage2.png" alt="CrashCatcher">
+   <img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/frontpage2.png" alt="CrashCatcher">
 </a>
 
 Millions of hours of video are recorded weekly on dashcams, and storage costs can easily skyrocket if all video is stored unnecesarily. Automatically screening dashcam footage for accidents is an easy way to reduce storage costs and to only save footage relevant to the mission and goals of an organization. Visit the [Crash Catcher](http://crashcatcher.site) website to check out some example videos to see the algorithm in action, or upload your own video to see how it works.
