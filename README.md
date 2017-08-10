@@ -52,7 +52,7 @@ Of course, there are many other applications as well, from self-driving cars to 
 <br />
 <b>The Data</b>:
 <br />
-Over 250 videos (>25,000 individual frames) are leveraged to build the hierarchical recurrent neural network model. Each clip is from dashboard camera footage taken from automobiles. The videos are 4 seconds long each and are derived from two data sources. One is the private ACCV dataset (VSLab Research), which largely populates the "negative" examples of driving through diverse road scenes without any accidents. This dataset also contains 4 second segments of additional footage that does contain car accidents. To supplement these videos, I scraped extra youtube dashcam footage into four second clips, focusing in particular on head-on collisions.
+Over 250 videos (over 25,000 individual frames) are leveraged to build the hierarchical recurrent neural network model. Each clip is from dashboard camera footage taken from automobiles. The videos are 4 seconds long each and are derived from two data sources. One is the private ACCV dataset (VSLab Research), which largely populates the "negative" examples of driving through diverse road scenes without any accidents. This dataset also contains 4 second segments of additional footage that does contain car accidents. To supplement these videos, I scraped extra youtube dashcam footage into four second clips, focusing in particular on head-on collisions.
 
 <br />
 <b>Training Dataset</b>:
@@ -67,9 +67,9 @@ For the final dataset, I had a total of 129 positive videos (those with crashes)
 <b>Processing</b>:
 <br />
 Each video is broken up into its individual frames to be analyzed separately. Each of these images is a two-dimensional array of pixels (1280x720) where each pixel has information about the red, green, and blue (RGB) color levels. To reduce the dimensionality at the individual image level, I convert the 3-D RGB color arrays to grayscale. Additionally, to make the computations more tractable on a CPU, I downsample each image by a factor of 5 - in effect, averaging every five pixels to reduce the size of each image to a 2-D array of 256x144 (as opposed to the initial 3-D array of 1280x720x3). (This sequence of events is illustrated in the image to the upper right).
-<br />
+
 Additional processing was explored for this project, such as median-subtracting out the background of the images and featurizing each frame in the image. The latter was done with the pre-trained inception and imagenet models (these are models that largely rely on convolutional neural networks to classify images based on a reduced set of extracted features from the images). These approaches did not produce an discernible improvement and were left out of the final product.
-<br /><br />
+<br /> <br />
 
 
 
