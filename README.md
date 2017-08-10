@@ -36,8 +36,7 @@ Advanced machine learning techniques are employed to compare video footage conta
 
 <b>Insurance Companies</b>: With drivers recording millions of hours of video weekly, it becomes necessary to only save video as necessary. Automatically screening dashcam footage for anomalous events is an easy way to reduce storage costs and to save video relevant to their clients' insurance rates.
 
-
-<b>Police Departments</b>:Dashcam footage from patrol generates more data than most police departments are equipped to handle, and is often deleted at regular intervals. If specific footage from the road is needed weeks or months later for a case, this can be a problem. Automatic screening for accidents can reduce the effort needed to retain relevant footage.
+<b>Police Departments</b>: Dashcam footage from patrol generates more data than most police departments are equipped to handle, and is often deleted at regular intervals. If specific footage from the road is needed weeks or months later for a case, this can be a problem. Automatic screening for accidents can reduce the effort needed to retain relevant footage.
 
 <b>Legal Proceedings</b>: Video evidence is often persuasive in investigating the reliability of testimony and in determining who is at-fault in an accident. Automatic Accident Detection will save time and energy when searching for footage relevant to the investigation at hand.
 
@@ -49,23 +48,22 @@ Of course, there are many other applications as well, from self-driving cars to 
 
 <a name="Data"/>
 <h3>Data and Processing</h3>
-<br />
+
 <b>The Data</b>:
-<br />
+
 Over 250 videos (over 25,000 individual frames) are leveraged to build the hierarchical recurrent neural network model. Each clip is from dashboard camera footage taken from automobiles. The videos are 4 seconds long each and are derived from two data sources. One is the private ACCV dataset (VSLab Research), which largely populates the "negative" examples of driving through diverse road scenes without any accidents. This dataset also contains 4 second segments of additional footage that does contain car accidents. To supplement these videos, I scraped extra youtube dashcam footage into four second clips, focusing in particular on head-on collisions.
 
-<br />
+
 <b>Training Dataset</b>:
-<br />
+
 The ACCV dataset contains more than 1000 videos without crashes and more than 600 with crashes. However, many of the negative (non-crash) videos show the same driving scene -- this set was culled to have unique videos and to remove videos with logos, intro scenes, etc. This left 439 non-crash videos of serene driving.
 
 Of the 600 videos with accidents, the types of accidents were exceptionally diverse, including any combination of pedestrians, bicyclists, mopeds, cars, trucks, etc., many of which were far in the distance of the dashcam footage. Even after weeding out non-auto and distance crashes, the wide variety of the scenes made training a model difficult. With 36 of these videos showing head-on collisions involving cars, I supplemented the data by turning to YouTube, where I found and extracted 4-second clips for 93 examples of head-on collisions.
 
 For the final dataset, I had a total of 129 positive videos (those with crashes), and randomly sampled an equal number of negative videos (those without a crash) to ensure balanced classes.
 
-<br />
 <b>Processing</b>:
-<br />
+
 Each video is broken up into its individual frames to be analyzed separately. Each of these images is a two-dimensional array of pixels (1280x720) where each pixel has information about the red, green, and blue (RGB) color levels. To reduce the dimensionality at the individual image level, I convert the 3-D RGB color arrays to grayscale. Additionally, to make the computations more tractable on a CPU, I downsample each image by a factor of 5 - in effect, averaging every five pixels to reduce the size of each image to a 2-D array of 256x144 (as opposed to the initial 3-D array of 1280x720x3). (This sequence of events is illustrated in the image to the upper right).
 
 Additional processing was explored for this project, such as median-subtracting out the background of the images and featurizing each frame in the image. The latter was done with the pre-trained inception and imagenet models (these are models that largely rely on convolutional neural networks to classify images based on a reduced set of extracted features from the images). These approaches did not produce an discernible improvement and were left out of the final product.
