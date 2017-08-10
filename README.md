@@ -80,15 +80,16 @@ A hierarchical recurrent neural network algorithm is used to tackle the complex 
 
 <br />
 <b>The Algorithm</b>:
-<br />
+
 Each video is a data point that either does or does not contain a car accident. However, each video is a set of individual images that are time-dependent sequences. The algorithm I've chosen - a hierarchical recurrent neural network - is able to treat each video as a time-dependent sequence, but still allow each video to be an independent data point.
+
 The algorithm uses two layers of long short-term memory neural networks. The first neural network (NN) is a recurrent network that analyzes the time-dependent sequence of the images within each video. The second takes the encoding of the first NN and builds a second NN that reflects which videos contain accidents and which do not. The resulting model enables a prediction of whether new dashcam footage has an accident.
 
 Through this method, the HRNN incorporates a time-dependent aspect of the frames within each video to predict how likely it is a new video contains a car accident.
-<br />
+
 
 <b>Training and Validation</b>:
-<br />
+
 The 258 video set was used with the HRNN for the classification of crash/not crash. 60% of the dataset was used to train the model and 20% to validate. I iterated with the training and validation sets repeatedly to test various setups of the algorithm and model parameters.
 
 The hyperparameters - the number of layers in the neural network layers, the batch size, the number of epochs - were adjusted using a comparison to a control run (as a grid search was not feasible in the alloted timeframe). As an extra sanity check, I created fake data by populating images with random numbers and running the fake data through the model, achieving results equivalent to random chance. The final model uses a binary crossentropy loss with a NAdam optimization and 128 layers in each neural network.
@@ -97,12 +98,12 @@ In the end, the ROC (receiver operating characteristic) curves were built with t
 
 Other approaches were explored initially, including logistic regression and basic NN to classify and predict based on hand-labeled frames (crash vs. not crash) from five longer (>30 seconds) YouTube videos merged together. The model performed excellent on a randomly selected hold-out set of frames from within these images, but was unable to generalize to any new test video, again showing how a lack of data heavily weighs on this problem. Additionally, unsupervised clustering on these same hand-labeled frames was tested on a single video. The goal was to determine if the frames containing an accident within these longer videos were distinct from the rest of the non-accident frames. While the accident frames did appear to occupy different clusters than most of the rest of the video, it was not a unique mapping; other events in the video (e.g.: going through a tunnel) prompted similar clustering behavior. <br />
 
-<img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/roc.png" alt="ROC Curve">
+<img src="https://github.com/rwk506/CrashCatcher/blob/master/imgs/roc_curve.png" alt="ROC Curve">
 
 
 <br />
 <b>Next Steps and Broader Applications</b>:
-<br />
+
 The ultimate goal is to build a model with the data I have to make predictions for a wider variety of situations. In general, neural networks rely on training on a LOT of data (thousands of data points - this case videos) to be able to accurately predict or classify in a new situation. Essentially more data = a more generalizable model.
 
 There are a few ways to achieve this goal. One is to simply gather more data - however this is a heavily tedious, time-intensive task for humans. Another possible solution is to generate "new" data by slightly altering the data we have. This means applying rotation, horizontal flips, changing image quality, or other variations on the images within each video. Although most humans would recognize the altered videos as being essentially the same, it looks like different and new data to the algorithm. Repeating these alterations over and over to the same set of videos generates a larger dataset and will improve the generalization of the predictions to never-before-seen data.
@@ -117,11 +118,25 @@ This algorithm is best implemented at scale. The analysis already splits input l
 <a name="Docs"/>
 <h3>Documentation</h3>
 
+There are three main files important to this project included here:
+<ul>
+<li><b>HRNN_pretrained_model.hdf5</b>: The model trained on the video dataset to predict crash/not crash. Can be loaded, compiled, and used to make predictions, as seen in HRNN_training.ipynb
+<li><b>HRNN_training.ipynb</b>: This notebook walks through the process of loading and prepping the dataset, setting up and training the HRNN model, and examining the results.
+<li><b>YouTube_scraping.ipynb</b>: This short script contains a few functions to help download videos and scrape 4 second clips of dashcam video.
+</ul>
+
 <br /><br />
 
 
 <a name="Resources"/>
 <h3>Resources</h3>
+[HRNN for the MNIST Dataset for Handwritten Number Recognition](https://github.com/fchollet/keras/blob/master/examples/mnist_hierarchical_rnn.py)
+
+[A Hierarchical Neural Autoencoder for Paragraphs and Documents](https://arxiv.org/abs/1506.01057)
+
+[Hierarchical recurrent neural network for skeleton based action recognition](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7298714)
+
+[AAVC Dataset from VSLab](https://aliensunmin.github.io/project/dashcam/)
 
 <br /><br />
 
@@ -129,6 +144,7 @@ This algorithm is best implemented at scale. The analysis already splits input l
 <a name="Other"/>
 <h3>Other Information</h3>
 
+I am a Ph.D. Astronomer turned Insight Data Science Fellow. Please feel free to reach out on [LinkedIn](www.linkedin.com/in/rawagnerkaiser/) or check out my other work on [GitHub](https://github.com/rwk506).
 
 <br /><br />
 
