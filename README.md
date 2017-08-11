@@ -94,7 +94,7 @@ Through this method, the HRNN incorporates a time-dependent aspect of the frames
 
 The 258 video set was used with the HRNN for the classification of crash/not crash. 60% of the dataset was used to train the model and 20% to validate. I iterated with the training and validation sets repeatedly to test various setups of the algorithm and model parameters.
 
-The hyperparameters - the number of layers in the neural network layers, the batch size, the number of epochs - were adjusted using a comparison to a control run (as a grid search was not feasible in the alloted timeframe). As an extra sanity check, I created fake data by populating images with random numbers and running the fake data through the model, achieving results equivalent to random chance. The final model uses a binary crossentropy loss with a NAdam optimization and 128 layers in each neural network.
+The hyperparameters - the number of layers in the neural network layers, the batch size, the number of epochs - were adjusted using a comparison to a control run (as a grid search was not feasible in the alloted timeframe). As an extra sanity check, I created fake data by populating images with random numbers and running the fake data through the model, achieving results equivalent to random chance. The final model uses a categorical crossentropy loss with a NAdam optimization and 128 layers in each neural network.
 
 In the end, the ROC (receiver operating characteristic) curves were built with the final 20% of the data - the test set (as seen in the image above to the right). The area under the curve is 0.80 and the overall accuracy is ~81%, well above random chance (the dotted black line in the plot below).
 
