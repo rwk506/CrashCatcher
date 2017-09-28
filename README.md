@@ -12,6 +12,8 @@ Dashboard Camera video is becoming more and more common these days - whether it'
 
 Visit the [Crash Catcher](http://crashcatcher.site) website to see the algorithm in action with example videos, or upload your own dashcam footage to see how it works.
 
+The readable markdown of the code is [here](https://github.com/rwk506/CrashCatcher/blob/master/HRNN_training.md) though the full python code is also available for download as a .py file.
+
 <br />
 
 <h4>Table of Contents</h4>
@@ -124,7 +126,7 @@ This algorithm is best implemented at scale. The analysis already splits input l
 There are three main files important to this project included here:
 <ul>
 <li><b>HRNN_pretrained_model.hdf5</b>: The model trained on the video dataset to predict crash/not crash. Can be loaded, compiled, and used to make predictions, as seen in HRNN_training.ipynb
-<li><b>HRNN_training.ipynb</b>: This notebook walks through the process of loading and prepping the dataset, setting up and training the HRNN model, and examining the results.
+<li><b>HRNN_training.py</b>: This file walks through the process of loading and prepping the dataset, setting up and training the HRNN model, and examining the results.
 <li><b>YouTube_scraping.ipynb</b>: This short script contains a few functions to help download videos and scrape 4 second clips of dashcam video.
 </ul>
 
