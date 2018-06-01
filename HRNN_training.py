@@ -161,7 +161,7 @@ x_train = array(x_train); y_train = array(y_train)                          ### 
 x_testA = array(x_t1[len(x_t1)/2:]); y_testA = array(y_t1[len(y_t1)/2:])    #### test set
 
 ### valid set for model
-x_testB = array(x_t1[:len(x_t1)/2]); y_testB = array(y_t1[:len(y_t1)/2])    ### need to be arrays
+x_testB = array(x_t1[:len(x_t1)/2]); y_test = array(y_t1[:len(y_t1)/2])    ### need to be arrays
 x_test = make_dataset(x_testB)
 
 
