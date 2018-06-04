@@ -290,7 +290,7 @@ x_holdout = make_dataset(x_testA)
 
 
 plot([0,1],[0,1],'k:',alpha=0.5)                       ### plot the "by chance" line - the goal is to achieve better than random accuracy
-ys = [y_train, y_testB, y_testA]                       ### set up labels to be iterated through
+ys = [y_train, y_test, y_testA]                       ### set up labels to be iterated through
 labs = ['Train', 'Valid', 'Test']                      ### set up tags to be iterated through
 col = ['#4881ea', 'darkgreen', 'maroon']               ### set up colors to be iterated through
 preds = []                                             ### set up prediction as empty array to populate
